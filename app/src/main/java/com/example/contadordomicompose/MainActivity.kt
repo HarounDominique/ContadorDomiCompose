@@ -3,6 +3,7 @@ package com.example.contadordomicompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
 import androidx.compose.material.MaterialTheme
@@ -36,17 +37,17 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MainScreen() {
-    Column(Modifier.fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
-        Column(Modifier.weight(1f)) {
-            Row() {
+    Column(
+        Modifier.fillMaxSize(),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Column(Modifier.weight(1f), verticalArrangement = Arrangement.Center) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Button(onClick = { /*TODO*/ }) {
                     val cont1 = 0
                     Text("Contador 1 $cont1")
-                    //Clickable(onClick = { /* tu acción al hacer clic */ }) {
-                        //Icon(Icons.Filled.Delete, contentDescription = "Papelera")
-                    //}
                 }
+                Icon(Icons.Filled.Delete, contentDescription = "Papelera", Modifier.clickable { })
             }
             Row() {
                 Text("Incremento:")
@@ -65,13 +66,13 @@ fun MainScreen() {
 
             }
         }
-        Column(Modifier.weight(1f)) {
-            Row() {
-                val contGlobal = 0
-                Text("Global $contGlobal")
-                Icon(Icons.Filled.Delete, contentDescription = "Papelera")
-            }
+
+        Row(Modifier.weight(0.5f)) {
+            val contGlobal = 0
+            Text("Global $contGlobal")
+            Icon(Icons.Filled.Delete, contentDescription = "Papelera")
         }
+
     }
 }
 
